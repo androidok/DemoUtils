@@ -1,0 +1,7 @@
+这个项目模块主要的目的就是通过调用系统的文件管理器获取点击文件的路径，图片的路径
+调用手机的相册管理器获取图片和图片的路径，通过这两种方式都可以实现获取路径的方法，通过文件管理器可以获取到任何文件，通过系统管理器只能获取到相册
+OpenSystemFile(View v)打开一个文件管理器的选择布局，通过打开的布局选择一个文件管理器。
+OpenSystemPhoto(View v)打开相册的管理器
+getImageFromContresloverPhoto(Intent data)通过getContentResolver() 获取到图片
+getPathFromSystemPhoto(Intent intent)通过getContentResolver() 获取到图片路径
+这个项目的缺点是一次只能获取一个路径，点击之后就会回到主界面
