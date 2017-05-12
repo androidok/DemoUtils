@@ -20,8 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--adjustResize:输入的时候会在软件盘的下面但是有一点不好的就是软件盘会压缩整个window，导致输入框部分被压缩，如果解决这个问题，修改成adjustPan-->
         <activity android:name=".secondActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             ></activity>
     </application>
 
