@@ -6,15 +6,19 @@ android:imeOptions="flagNoExtractUi"
 2.竖屏的解决方法：
 这个模块主要介绍熬得是如何处理输入文本的时候，软件盘有可能会覆盖输入框的问题
 第一种的解决方法是，很少的使用
-在清单文件中把activity的android:windowSoftInputMode="adjustResize"
-第二种的方法:第二种方法使用的比较多
-你的输入框处于偏上面，一般情况下这样就不会有什么问题，但是如果你的界面纵向方面使用的是layout_weight即比重来分布页面的话，
-软件盘会压缩整个window，导致输入框部分被压缩。 解决方法：在manifest中对activity设置
-android:windowSoftInputMode="adjustPan"
+在清单文件中把activity的android:windowSoftInputMode="stateHidden|adjustResize"
+第二种的方法:
+解决方法：在manifest中对activity设置
+android:windowSoftInputMode="stateHidden|adjustPan"
 这样键盘不会对压缩原窗口，只会遮盖下面一部分内容。这样输入框不会被压缩了。
-第三种方法：偶尔使用，也是很少使用因为这个是滑动到scrollview的底部，如果editText在在底部很好，这时候输入内容是没有问题的，如果在顶部，
-并且下面也有很多的控件，这样的话就有可能editText在顶部隐藏了，就是说把它推到最上面，下面的控件把它顶出要显示的界面上。
 
+使用的比较多
+你的输入框处于偏上面，一般情况下这样就不会有什么问题，但是如果你的界面纵向方面使用的是layout_weight即比重来分布页面的话，
+软件盘会压缩整个window，导致输入框部分被压缩。 
+第三种方法：
+在manifest中对activity设置
+android:windowSoftInputMode="stateHidden|adjustPan"
+将布局的最外层添加一个ScrollView
 原理很简单，将布局的最外层添加一个ScrollView，当用户点击EditText时，将ScrollView滚动到底
 edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -23,7 +27,10 @@ edit.setOnClickListener(new View.OnClickListener() {
                 mScrollView.fullScroll(View.FOCUS_DOWN); 
             }
         });
-     
+   
+  偶尔使用， 也是很少使用因为这个是滑动到scrollview的底部，如果editText在在底部很好，这时候输入内容是没有问题的，如果在顶部，
+并且下面也有很多的控件，这样的话就有可能editText在顶部隐藏了，就是说把它推到最上面，下面的控件把它顶出要显示的界面上。
+
 
 3.判断软键盘当前是否处于弹出状态
 if(getWindow().getAttributes().softInputMode==WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
