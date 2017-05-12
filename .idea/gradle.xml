@@ -9,6 +9,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/FileAndPhoto" />
+            <option value="$PROJECT_DIR$/PhotoAnit" />
+            <option value="$PROJECT_DIR$/SoftInputManager" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

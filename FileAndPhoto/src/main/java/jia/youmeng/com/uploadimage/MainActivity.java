@@ -87,7 +87,9 @@ public class MainActivity extends AppCompatActivity {
         //根据需要，也可以加上Option这个参数
         InputStream inputStream;
         try {
+            //获取输入流
             inputStream = getContentResolver().openInputStream(uri);
+            //通过输入流把图片转成bitmap
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             iv.setImageBitmap(bitmap);
         } catch (FileNotFoundException e) {

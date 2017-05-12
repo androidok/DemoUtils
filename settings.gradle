@@ -1,1 +1,1 @@
-include ':app', ':FileAndPhoto', ':FileAndPhoto'
+include ':app', ':FileAndPhoto', ':FileAndPhoto', ':SoftInputManager', ':PhotoAnit'
