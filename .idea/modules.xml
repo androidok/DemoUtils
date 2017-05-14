@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/SoftInputManager/SoftInputManager.iml" filepath="$PROJECT_DIR$/SoftInputManager/SoftInputManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zXingDemo/zXingDemo.iml" filepath="$PROJECT_DIR$/zXingDemo/zXingDemo.iml" />
     </modules>
   </component>
 </project>

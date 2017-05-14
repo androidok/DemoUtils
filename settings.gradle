@@ -1,1 +1,2 @@
 include ':app', ':FileAndPhoto', ':FileAndPhoto', ':SoftInputManager', ':PhotoAnit', ':QRdemo'
+include ':zXingDemo'
