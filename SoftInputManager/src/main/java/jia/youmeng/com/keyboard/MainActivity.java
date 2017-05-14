@@ -28,12 +28,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButton = (Button) findViewById(R.id.button);
         mButton1 = (Button) findViewById(R.id.button1);
         mEdit.setOnClickListener(this);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         mButton1.setOnClickListener(this);
 
     }

@@ -1,0 +1,119 @@
+mainactivity 
+					初始化界面
+的oncreate方法      查找控件
+					控件设置监听
+	
+	点击按钮之后跳转到mipcaActivityCapture，使之处于栈顶
+	
+	执行mipcaActivityCapture的
+		oncreate方法
+	
+			初始化相机管理类CameraManager，创建一个单例的相机管理类对象
+	
+			查找中间扫描框控件
+	
+			执行定时任务类InactivityTimer
+	
+				执行定时任务类InactivityTimer的构造方法
+					执行InactivityTimer中的onActivity方法
+					执行Cancel方法
+					创建一个任务，定义过多长的时间创建一个FinishLister对象
+	执行自定义控件ViewfinderView的
+		构造方法
+			
+			
+	执行mipcaActivityCapture的
+		onresume方法
+			查找surfaceView对象
+			获取surfaceHolder对象
+			给surfaveHolder添加一个回掉方法addCallBack
+				实现surfacecreated
+					surfacechanged
+					surfaceDestroyed
+			通过setType设置surfaveHolder加载数据的方式
+			初始化声音管理器对象AudioManager
+			初始化声音的资源InitBeepsound
+			设置和i否整栋的布尔值
+			
+		执行surfaceCreated方法
+			执行initCamera方法
+				执行CameraManager里的openDriver方法打开后面摄像头
+						在CameraConfigurationManager中执行initFromCameraParameters()方法
+						在CameraConfigurationManager中执行setDesiredCameraParameters()方法
+							执行CameraConfigurationManager中的	setFlash()设置闪光灯的参数值
+							执行CameraConfigurationManager中的	setZoom设置相机的变焦值
+							执行CameraConfigurationManager中的	setDisplayOrientation，设置让摄像头旋转90度
+								
+						执行FlashlightManager中的enableFlashlight（），控制闪光灯的使用
+								执行setFlashlight()方法。
+				执行CaptureActivityHandler类的构造方法
+						执行DecodeThread类的构造方法
+						执行ViewfinderResultPointCallback构造方法
+						执行CameraManager中的startPreview()
+						执行CaptureActivityHandler类中的restartPreviewAndDecode()
+								执行CameraManager中的requestPreviewFrame()方法，传递过去decodeThread.getHandler()
+										执行PreviewCallback中的setHandler
+										执行setPreviewCallback方法，设置回掉方法
+								执行CameraManager中的requestAutoFocus()方法。
+										执行PreviewCallback中的setHandler
+										执行autoFocus方法，设置回掉方法
+								执行MipcaActivityCapture中的drawViewfinder方法	
+										执行ViewFinderView中的drawViewfinder方法
+											执行invalidate()方法。重新绘制界面
+		执行自定义控件ViewfinderView的
+			ondraw方法
+				执行CameraManager里的方法
+					首先执行静态方法static {
+					执行CameraManager的构造方法
+					执行CameraConfigurationManager的构造方法
+					执行预览的回调方法PreviewCallback的构造方法
+					执行AutoFocusCallback的构造方法，创建AutoFocusCallback实例对象
+					执行CameraManager里get()方法，获取CameraManager实例
+					执行CameraManager里getFramingRect(),获取扫描框矩形的大小
+					下面就是画矩形框和画要显示的文字和中间移动的线条
+					执行postInvalidateDelayed方法不断的刷新界面			
+								
+		执行PreviewCallback类中的onPreviewFrame方法发送消息，这时候的decodeThread.getHandler()是DecodeHandler的
+			所以只能是DecodeHandler类中handmessage接受发送的消息，
+		执行DecodeHandler类中handmessage()方法
+				执行DecodeHandler类中decode方法
+						执行PlanarYUVLuminanceSource的getRaw方法
+						执行PlanarYUVLuminanceSource的getMatrix()方法
+				
+		执行CaptureActivityHandler类的handmessage方法
+					
+		执行MipcaActivityCapture中的handleDecode方法，
+		
+		
+	一些方法的执行顺序
+ surfaceCreated::正在运行
+ startPreview正在运行
+ requestPreviewFrame正在运行
+ drawViewfinderzhengzaiyunxing 
+ onDraw1::正在运行
+ onPreviewFrame正在运行
+ DecodeHandler Handmessage正在运行
+ onDraw1::正在运行
+ requestPreviewFrame正在运行
+ CaptureActivityHandler Handmessage
+ onPreviewFrame正在运行
+ DecodeHandler Handmessage正在运行
+ requestPreviewFrame正在运行
+ CaptureActivityHandler Handmessage
+ onPreviewFrame正在运行
+ DecodeHandler Handmessage正在运行
+ requestPreviewFrame正在运行
+ CaptureActivityHandler Handmessage
+ onDraw1::正在运行
+ onPreviewFrame正在运行
+ DecodeHandler Handmessage正在运行
+ onDraw1::正在运行
+ onDraw1::正在运行
+ onDraw1::正在运行
+ requestPreviewFrame正在运行
+CaptureActivityHandler  Handmessage
+ onDraw1::正在运行
+ onDraw1::正在运行
+05-14 19:27:51.642 
+				
+				
