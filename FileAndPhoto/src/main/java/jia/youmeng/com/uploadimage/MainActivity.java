@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         iv=(ImageView) findViewById(R.id.iv);
     }
-
+    //打开系统的文件管理器，在onActivityResult取得路径
     public void OpenSystemFile(View v) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "请安装文件管理器", Toast.LENGTH_SHORT).show();
         }
     }
-
+    //代开系统的图片管理器，在onActivityResult获取图片的路径
     public void OpenSystemPhoto(View view){
         Intent intent = new Intent();
         intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -70,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
                 String ss=uri.getPath();
                 Toast.makeText(getApplicationContext(), ss, Toast.LENGTH_LONG).show();
             }else if(requestCode==REQUEST_CODE){
+                //第一种获取图片的方法
                 getPathFromSystemPhoto(data);
+                //第二种方式获取图片的方法
                 getImageFromContresloverPhoto(data);
             }
 
