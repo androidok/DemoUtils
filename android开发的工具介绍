@@ -1,4 +1,4 @@
-AndroidKiller_1.3.1_  安卓的反编译工具
+AndroidKiller_1.3.1_  安卓的反编译工具  	apktool  jd-gui dex2jar这三个是独立的反编译工具，其中的AndroidKiller_1.3.1_ 是集成了这三个的反编译的一个集成工具
 
 HiJson 2.1.2_jdk  用来格式化json数据的一个工具
 
